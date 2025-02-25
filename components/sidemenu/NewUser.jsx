@@ -1,21 +1,9 @@
 "use client"
 import React from "react"
-import {
-  BadgeCheck,
-  Bell,
-  ChevronsUpDown,
-  CreditCard,
-  LogOut,
-  Sparkles,
-} from "lucide-react"
+import { ChevronsUpDown } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
   DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import {
@@ -34,7 +22,6 @@ const defaultUser = {
 const NewUser = ({ user = defaultUser }) => {
   const { isMobile } = useSidebar()
 
-  // Get initials for avatar fallback
   const initials =
     user?.name
       ?.split(" ")
@@ -66,7 +53,6 @@ const NewUser = ({ user = defaultUser }) => {
               <ChevronsUpDown className="ml-auto size-4" />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
-          {/* ...rest of the component remains the same... */}
         </DropdownMenu>
       </SidebarMenuItem>
     </SidebarMenu>

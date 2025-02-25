@@ -1,16 +1,9 @@
-import Link from "next/link"
 import React from "react"
 import { Button } from "@/components/ui/button"
 import NotificationCard from "./NotificationCard"
-
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
@@ -23,9 +16,8 @@ const Notification = () => {
           <Bell />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-96 p-0" align="end" forceMount>
+      <DropdownMenuContent className=" p-0" align="end" forceMount>
         <NotificationCard />
-        {/* Render NotificationCard instead of dropdown items */}
       </DropdownMenuContent>
     </DropdownMenu>
   )

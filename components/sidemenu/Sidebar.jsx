@@ -4,7 +4,6 @@ import NewUser from "./NewUser"
 import { ChevronRight } from "lucide-react"
 import {
   Sidebar as SidebarComponent,
-  SidebarContent,
   SidebarGroup,
   SidebarHeader,
   SidebarMenu,
@@ -35,9 +34,6 @@ import {
   FaUsers,
   FaUser,
   FaChartBar,
-  FaChevronDown,
-  FaChevronRight,
-  FaFutbol,
 } from "react-icons/fa"
 const data = {
   navMain: [
