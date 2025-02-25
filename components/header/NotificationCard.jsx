@@ -10,12 +10,7 @@ import {
 } from "@/components/ui/card"
 import { Switch } from "@/components/ui/switch"
 import { Button } from "@/components/ui/button"
-
-const notifications = [
-  { title: "New Message", description: "You have a new message from John." },
-  { title: "System Update", description: "A new system update is available." },
-  { title: "Reminder", description: "Don't forget to check your calendar." },
-]
+import { notifications } from "@/lib/data"
 
 function NotificationCard({ className, ...props }) {
   return (
@@ -41,9 +36,9 @@ function NotificationCard({ className, ...props }) {
           {notifications.map((notification, index) => (
             <div
               key={index}
-              className="mb-4 grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0"
+              className="mb-2 grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0"
             >
-              <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
+              <span className="flex h-2 w-2 translate-y-1 rounded-full bg-[#605dff]" />
               <div className="space-y-1">
                 <p className="text-sm font-medium leading-none">
                   {notification.title}
@@ -57,7 +52,7 @@ function NotificationCard({ className, ...props }) {
         </div>
       </CardContent>
       <CardFooter>
-        <Button className="w-full">
+        <Button className="w-full bg-[#605dff]">
           <Check /> Mark all as read
         </Button>
       </CardFooter>

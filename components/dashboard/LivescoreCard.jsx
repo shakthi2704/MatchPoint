@@ -1,50 +1,20 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { matches } from "@/lib/data"
 
 const LiveScoreCard = () => {
-  const matches = [
-    {
-      league: "Premier League",
-      homeTeam: {
-        name: "Chelsea",
-        logo: "https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg",
-      },
-      awayTeam: {
-        name: "Arsenal",
-        logo: "https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg",
-      },
-      score: "2 - 1",
-      status: "Live",
-      time: "75'",
-    },
-    {
-      league: "La Liga",
-      homeTeam: {
-        name: "Real Madrid",
-        logo: "https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg",
-      },
-      awayTeam: {
-        name: "Barcelona",
-        logo: "https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg",
-      },
-      score: "0 - 0",
-      status: "Upcoming",
-      time: "19:00",
-    },
-  ]
-
   const [index, setIndex] = useState(0)
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % matches.length)
-    }, 3000) // Adjust this value to control the scroll speed
+    }, 3000)
 
     return () => clearInterval(interval)
   }, [matches.length])
 
   return (
-    <div className="w-full max-w-md bg-white  rounded-md p-4">
+    <div className="w-full max-w-md bg-amber-50  rounded-md p-4">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-semibold text-gray-700">Live Scores</h2>
         <button className="text-sm text-blue-500 hover:text-blue-700">
@@ -55,10 +25,10 @@ const LiveScoreCard = () => {
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
-            initial={{ y: "100%" }} // Start from the bottom
-            animate={{ y: 0 }} // Move upwards
-            exit={{ y: "-100%" }} // Exit upwards
-            transition={{ duration: 0.8 }} // Duration of the scroll animation
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "-100%" }}
+            transition={{ duration: 0.8 }}
           >
             <MatchCard match={matches[index]} />
           </motion.div>

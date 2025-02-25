@@ -37,7 +37,6 @@ const ProfileDropdown = () => {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
-            {/* Change 'to' to 'href' */}
             <Link href="/settings">
               Profile
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
