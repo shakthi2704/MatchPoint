@@ -18,6 +18,8 @@ import {
 } from "@/components/ui/sidebar"
 import { MdScoreboard } from "react-icons/md"
 
+import { usePathname } from "next/navigation"
+
 import {
   Collapsible,
   CollapsibleContent,
@@ -36,59 +38,39 @@ import {
   FaChartBar,
 } from "react-icons/fa"
 const data = {
-  navMain: [
+  projects: [
+    { name: "Dashboard", url: "/dashboard", icon: FaHome },
+    { name: "Live Score", url: "/live", icon: MdScoreboard },
+  ],
+  main: [
     {
       title: "Leagues",
-      url: "#",
-      icon: FaTable, // React icon added here
+      url: "/leagues",
+      icon: FaTable,
       isActive: true,
       items: [
-        {
-          title: "All Leagues",
-          url: "#",
-        },
-        {
-          title: "League Standings",
-          url: "#",
-        },
-        {
-          title: "League Fixtures",
-          url: "#",
-        },
-        {
-          title: "League Stats",
-          url: "#",
-        },
+        { title: "All Leagues", url: "/leagues/all-leagues" },
+        { title: "League Standings", url: "/leagues/standings" },
+        { title: "League Fixtures", url: "/leagues/fixtures" },
+        { title: "League Statistics", url: "/leagues/statistics" },
       ],
     },
     {
       title: "Tournaments",
       url: "#",
-      icon: FaTrophy, // React icon added here
+      icon: FaTrophy,
       items: [
-        {
-          title: " Tournament Standings",
-          url: "#",
-        },
+        { title: "Tournament Standings", url: "/tournaments/tournament" },
       ],
     },
     {
       title: "Teams",
       url: "#",
-      icon: FaUsers, // React icon added here
+      icon: FaUsers,
       items: [
-        {
-          title: "All Teams",
-          url: "#",
-        },
-        {
-          title: "Team Stats",
-          url: "#",
-        },
-        {
-          title: "Squad List",
-          url: "#",
-        },
+        { title: "All Teams", url: "/teams/all-teams" },
+        { title: "Team Statistics", url: "/teams/statistics" },
+        { title: "Team Squad", url: "/teams/squad" },
       ],
     },
     {
@@ -96,22 +78,10 @@ const data = {
       url: "#",
       icon: FaUser, // React icon added here
       items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Top Scorers",
-          url: "#",
-        },
-        {
-          title: "Top Assists",
-          url: "#",
-        },
-        {
-          title: "Player Profiles",
-          url: "#",
-        },
+        { title: "General", url: "/players/general" },
+        { title: "Top Scorers", url: "/players/scores" },
+        { title: "Top Assists", url: "/players/assists" },
+        { title: "Player Profiles", url: "/players/profile" },
       ],
     },
     {
@@ -119,51 +89,21 @@ const data = {
       url: "#",
       icon: FaChartBar, // React icon added here
       items: [
-        {
-          title: "Match Statistics",
-          url: "#",
-        },
-        {
-          title: "Top Scorers",
-          url: "#",
-        },
-        {
-          title: "Team Performance",
-          url: "#",
-        },
-        {
-          title: "Player Performance",
-          url: "#",
-        },
+        { title: "Match Statistics", url: "/statistics/match" },
+        { title: "Top Scorers", url: "/statistics/scorers" },
+        { title: "Team Performance", url: "/statistics/team" },
+        { title: "Player Performance", url: "/statistics/player" },
       ],
     },
   ],
-  projects: [
-    {
-      name: "Dashboard",
-      url: "#",
-      icon: FaHome, // React icon added here
-    },
-    {
-      name: "Live Score",
-      url: "#",
-      icon: MdScoreboard, // React icon added here
-    },
-  ],
+
   others: [
-    {
-      name: "Settings",
-      url: "#",
-      icon: FaCog, // React icon added here
-    },
-    {
-      name: "Logout",
-      url: "#",
-      icon: FaSignOutAlt, // React icon added here
-    },
+    { name: "Settings", url: "/settings", icon: FaCog },
+    { name: "Logout", url: "/logout", icon: FaSignOutAlt },
   ],
 }
 function Sidebar({ user, ...props }) {
+  const pathname = usePathname()
   return (
     <SidebarComponent
       collapsible="icon"
@@ -197,8 +137,15 @@ function Sidebar({ user, ...props }) {
         <SidebarMenu>
           {data.projects.map((project, index) => (
             <SidebarMenuItem key={index}>
-              <SidebarMenuButton asChild>
-                <a href={project.url}>
+              <SidebarMenuButton
+                asChild
+                className={`${
+                  pathname === project.url
+                    ? "bg-[#605dff] text-white"
+                    : "hover:bg-gray-300 text-black"
+                } transition duration-200 rounded-xs`}
+              >
+                <a href={project.url} className="flex items-center p-2">
                   {project.icon && <project.icon className="mr-2 h-4 w-4" />}
                   <span>{project.name}</span>
                 </a>
@@ -211,7 +158,7 @@ function Sidebar({ user, ...props }) {
       <SidebarGroup>
         <SidebarGroupLabel>More Infomation</SidebarGroupLabel>
         <SidebarMenu>
-          {data.navMain.map((item, index) => (
+          {data.main.map((item, index) => (
             <Collapsible key={index}>
               <SidebarMenuItem>
                 <CollapsibleTrigger asChild>
@@ -225,8 +172,20 @@ function Sidebar({ user, ...props }) {
                   <SidebarMenuSub>
                     {item.items?.map((subItem, subIndex) => (
                       <SidebarMenuSubItem key={subIndex}>
-                        <SidebarMenuSubButton asChild>
-                          <a href={subItem.url}>{subItem.title}</a>
+                        <SidebarMenuSubButton
+                          asChild
+                          className={`${
+                            pathname === subItem.url
+                              ? "bg-[#605dff] text-white"
+                              : "hover:bg-gray-300 text-black"
+                          } transition duration-200 rounded-xs`}
+                        >
+                          <a
+                            href={subItem.url}
+                            className="flex items-center p-2"
+                          >
+                            {subItem.title}
+                          </a>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
                     ))}
@@ -242,7 +201,14 @@ function Sidebar({ user, ...props }) {
         <SidebarMenu>
           {data.others.map((other, index) => (
             <SidebarMenuItem key={index}>
-              <SidebarMenuButton asChild>
+              <SidebarMenuButton
+                asChild
+                className={`${
+                  pathname === other.url
+                    ? "bg-[#605dff] text-white"
+                    : "hover:bg-gray-300 text-black"
+                } transition duration-200 rounded-xs`}
+              >
                 <a href={other.url}>
                   {other.icon && <other.icon className="mr-2 h-4 w-4" />}
                   <span>{other.name}</span>

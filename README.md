@@ -110,3 +110,52 @@ Here’s a **summarized table** to help you quickly find which **free** football
 - **Kaggle Datasets** is a **free data source** if you prefer working with downloaded datasets, rather than real-time APIs.
 
 This table should help you quickly decide which API or dataset to use depending on your needs for football statistics!
+📂 app
+┣ 📂 (auth) # Authentication pages
+┃ ┗ 📜 page.jsx # Login page (UI ready, needs integration)
+┣ 📂 dashboard # Main dashboard layout
+┃ ┗ 📜 page.jsx # Dashboard home (summary of all data)
+┣ 📂 live-score # Live match scores
+┃ ┗ 📜 page.jsx  
+ ┣ 📂 leagues
+┃ ┣ 📜 page.jsx # All leagues
+┃ ┣ 📜 standings.jsx # League standings
+┃ ┣ 📜 fixtures.jsx # League fixtures
+┃ ┗ 📜 stats.jsx # League stats
+┣ 📂 tournaments
+┃ ┣ 📜 page.jsx
+┃ ┗ 📜 standings.jsx
+┣ 📂 teams
+┃ ┣ 📜 page.jsx # All teams
+┃ ┣ 📜 stats.jsx # Team stats
+┃ ┗ 📜 squad.jsx # Squad list
+┣ 📂 players
+┃ ┣ 📜 page.jsx # General player info
+┃ ┣ 📜 top-scorers.jsx
+┃ ┣ 📜 top-assists.jsx
+┃ ┗ 📜 profile.jsx # Player profiles
+┣ 📂 stats-analytics
+┃ ┣ 📜 page.jsx # Overview
+┃ ┣ 📜 match.jsx # Match stats
+┃ ┣ 📜 team.jsx # Team performance
+┃ ┗ 📜 player.jsx # Player performance
+┣ 📂 settings
+┃ ┗ 📜 page.jsx
+┣ 📜 layout.jsx # Main layout (Navbar, Sidebar, etc.)
+┣ 📜 page.jsx # Root (redirects to dashboard)
+📂 components
+┣ 📜 LiveScoreCard.jsx
+┣ 📜 LeagueTable.jsx
+┣ 📜 PlayerCard.jsx
+┣ 📜 TeamStats.jsx
+┗ 📜 Navbar.jsx
+📂 lib
+┣ 📜 api.js # API handler (Axios or Fetch)
+┣ 📜 utils.js # Helper functions
+📂 server
+┣ 📜 index.js # Express.js server entry (if needed)
+┣ 📜 routes.js # API routes
+┗ 📜 db.js # PostgreSQL connection
+📜 next.config.js
+📜 tailwind.config.js
+📜 package.json
