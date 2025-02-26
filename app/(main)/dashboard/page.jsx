@@ -61,8 +61,8 @@ const Dashboard = ({ userName = "User" }) => {
       <Sidebar />
       <SidebarInset>
         <Header />
-        <div className="flex flex-1 flex-col gap-4 p-4 pt-0 mx-2 my-4 ">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-[70%_30%]">
+        <div className="flex flex-1 flex-col gap-4 p-4 pt-0 mx-2 my-4 overflow-x-hidden bg-amber-400 ">
+          <div className="grid auto-rows-min gap-4 md:grid-cols-[60%_40%]">
             <div className="aspect-video rounded-xl bg-muted/50">
               <div className="trezo-card bg-primary-500 mb-[25px] p-[20px] md:p-[25px] rounded-md lg:col-span-2 bg-[#605dff]">
                 <div className="trezo-card-content relative md:pr-[230px]">
@@ -115,7 +115,7 @@ const Dashboard = ({ userName = "User" }) => {
                 </div>
               </div>
             </div>
-            <div className="aspect-video rounded-xl bg-muted/50 px-2 py-4 shadow-lg">
+            <div className="aspect-video rounded-xl bg-muted/50 px-2 py-4 shadow-xl flex justify-center">
               <LiveScoreCard />
             </div>
           </div>
